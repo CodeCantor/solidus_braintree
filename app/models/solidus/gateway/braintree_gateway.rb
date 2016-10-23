@@ -142,7 +142,13 @@ module Solidus
     end
 
     def credit(cents, source, authorization_code, options = {})
-      result = braintree_gateway.transaction.refund(authorization_code, amount(cents))
+      if self.payment_profiles_supported?
+        code = authorization_code
+      else
+        code = source
+      end
+
+      result = braintree_gateway.transaction.refund(code, amount(cents))
       handle_result(result)
     end
 
