@@ -10,6 +10,7 @@ module SolidusBraintree
         options = super
 
         options[:device_data] = order.braintree_device_data if order.braintree_device_data
+        options[:payment_method_nonce] = source.payment_method_nonce
 
         options
       end
