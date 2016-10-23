@@ -7,5 +7,9 @@ module SolidusBraintree
     def checkout_attributes
       super | [:braintree_device_data]
     end
+
+    def source_attributes
+      super | [:data]
+    end
   end
 end
