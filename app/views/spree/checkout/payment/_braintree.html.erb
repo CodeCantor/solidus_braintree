@@ -19,6 +19,9 @@
       <%= label_tag "name_on_card_#{payment_method.id}", Spree.t(:name_on_card) %><span class="required">*</span><br />
       <%= text_field_tag "#{param_prefix}[name]", "#{@order.billing_firstname} #{@order.billing_lastname}", { id: "name_on_card_#{payment_method.id}", :autocomplete => "cc-name" } %>
     </p>
+  <%= hidden_field_tag "#{param_prefix}[cc_type]", '', :id => "cc_type_br", :class => 'ccType' %>
+  <%= hidden_field_tag "#{param_prefix}[data]", '', :id => "data_br" %>
+  <%= hidden_field_tag "#{param_prefix}[last_digits]", '', :id => "last_digits_br" %>
 
     <p class="field" data-hook="card_number">
       <%= label_tag "braintree_card_number", Spree.t(:card_number) %><span class="required">*</span><br />
@@ -50,6 +53,4 @@
     <% end %>
   <% end %>
 
-  <%= hidden_field_tag "#{param_prefix}[cc_type]", '', :id => "cc_type", :class => 'ccType' %>
-  <%= hidden_field_tag "order[payments_attributes][][payment_method_nonce]", '', :id => "payment_method_nonce" %>
 </div>
