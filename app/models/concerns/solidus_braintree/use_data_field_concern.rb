@@ -11,6 +11,10 @@ module SolidusBraintree
         data["email"]
       end
 
+      def payment_method_nonce
+        data["payment_method_nonce"]
+      end
+
       def display_number
         cc_type == 'paypal' ? email : super
       end
